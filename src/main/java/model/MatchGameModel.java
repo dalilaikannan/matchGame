@@ -5,8 +5,8 @@ public class MatchGameModel implements GameModel {
   private final int numOfCards;
 
   public MatchGameModel(int numOfCards) {
-    if (numOfCards <= 0 || numOfCards > 7) {
-      throw new IllegalArgumentException("numOfCards must be between 1 and 7");
+    if (numOfCards <= 1 || numOfCards > 7) {
+      throw new IllegalArgumentException("numOfCards must be between 2 and 7");
     }
     // this is the number of unique cards
     this.numOfCards = numOfCards;
