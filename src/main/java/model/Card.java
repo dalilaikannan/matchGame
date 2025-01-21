@@ -13,4 +13,9 @@ public interface Card {
    * @return true if the card is flipped, false otherwise
    */
   boolean isFlipped();
+
+  /**
+   * Flips the given card.
+   */
+  void flip(Card flipCard);
 }

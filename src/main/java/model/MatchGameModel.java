@@ -7,6 +7,7 @@ public class MatchGameModel implements GameModel {
   private int movesLeft;
   private final int numOfCards;
   private ArrayList<Card> cards;
+  private Grid gameBoard;
 
   public MatchGameModel(int numOfCards) {
     if (numOfCards <= 1 || numOfCards > 7) {
@@ -28,11 +29,16 @@ public class MatchGameModel implements GameModel {
     return numOfCards;
   }
 
+  public ArrayList<Card> getCards() {
+    return cards;
+  }
+
   @Override
   public void setUp() {
     // movesLeft equals number of matches * 1.5 (rounds up for odd num of matches) (ex. 3 matches 5 moves)
     double temp = (double) numOfCards / 2;
     movesLeft = (int) (numOfCards  + Math.ceil(temp));
+    gameBoard = new MatchGrid(numOfCards);
 
     // sets up the cards, assigns a color and shuffles them so they end up in
     // randomized positions when playing
@@ -61,5 +67,19 @@ public class MatchGameModel implements GameModel {
       }
     }
      Collections.shuffle(cards);
+  }
+
+  @Override
+  public boolean checkMatch(Card card1, Card card2) {
+    if (card1 == null || card2 == null) {
+      throw new IllegalArgumentException("card1 and/or card2 are null");
+    }
+    return card1.getColor() == card2.getColor();
+  }
+
+  public void playTurn(Card card1, Card card2) {
+    if (checkMatch(card1, card2)) {
+      card1.isFlipped();
+    }
   }
 }

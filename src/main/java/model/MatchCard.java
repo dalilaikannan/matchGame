@@ -28,4 +28,8 @@ public class MatchCard implements Card{
   public boolean isFlipped() {
     return this.isFlipped;
   }
+
+  public void flip(Card flipCard) {
+    this.isFlipped = true;
+  }
 }

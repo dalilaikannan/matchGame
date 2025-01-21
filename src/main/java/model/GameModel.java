@@ -18,4 +18,12 @@ public interface GameModel {
    * @return the number of cards (unique cards, not total)
    */
   int getNumOfCards();
+
+  /**
+   * Takes in 2 cards and tells us if they are a match.
+   * @param card1 first card to be compared
+   * @param card2 second card to be compared
+   * @return true if the cards have the same color
+   */
+  boolean checkMatch(Card card1, Card card2);
 }
